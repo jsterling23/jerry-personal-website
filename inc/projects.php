@@ -262,3 +262,24 @@ function jerry_save_project_status($post_id) {
 }
 
 add_action('save_post_project', 'jerry_save_project_status');
+
+
+
+// adding a taxonomy function for categories
+
+function jerry_register_project_categories() {
+
+    register_taxonomy('project_category', array('project'), array(
+        'labels' => array(
+            'name'          => 'Project Categories',
+            'singular_name' => 'Project Category'
+        ),
+        'public' => true,
+        'hierarchical' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true
+    ));
+
+}
+
+add_action('init','jerry_register_project_categories');

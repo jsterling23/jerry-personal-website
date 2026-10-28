@@ -54,7 +54,7 @@
                 <a href="<?php echo esc_url(get_permalink()); ?>">
                     <h3><?php the_title(); ?></h3>
                     <p><?php the_excerpt(); ?></p>
-                    
+                </a>    
                     <?php
                     $status = get_post_meta(
                         get_the_ID(),
@@ -83,7 +83,26 @@
                             <?php echo esc_html($technologies); ?>
                         </p>
                     <?php endif; ?>
-                </a>
+
+                    <!-- categories                                        -->
+                    <?php
+                    $categories = get_the_terms(
+                        get_the_ID(),
+                        'project_category'
+                    );
+                    ?>
+
+                    <?php if (!empty($categories) && !is_wp_error($categories)) : ?>
+                        <p class="card-categories">
+                            <strong>Categories:</strong>
+
+                            <?php
+                            $category_names = wp_list_pluck($categories, 'name');
+                            echo esc_html(implode(', ', $category_names));
+                            ?>
+                        </p>
+                        <?php endif; ?>
+
             </article>
 
 

@@ -344,3 +344,10 @@ footer {
     color: #555;
     margin: 10px 0;
 }
+
+
+.card-categories {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
