@@ -16,9 +16,33 @@
         <?php
         $projects = new WP_Query(array(
             'post_type'      => 'project',
-            'posts_per_page' => 6,
-            'post_status'    => 'publish'
+            'posts_per_page' => -1,
+            'post_status'    => 'publish',
+            'orderby'        => 'date',
+            'order'          => 'DESC'
         ));
+
+        
+        $all_projects = $projects->posts;
+
+        
+        usort($all_projects, function($a, $b) {
+
+            $featured_a = (bool) get_post_meta($a->ID, 'project_featured', true);
+            $featured_b = (bool) get_post_meta($b->ID, 'project_featured', true);
+
+            // Featured projects appear first.
+            if ($featured_a !== $featured_b) {
+                return $featured_b <=> $featured_a;
+            }
+
+            // Otherwise, sort newest first.
+            return strcmp($b->post_date, $a->post_date);
+        });
+
+
+        $projects->posts = $all_projects;
+
 
         if ($projects->have_posts()) :
             while ($projects->have_posts()) :

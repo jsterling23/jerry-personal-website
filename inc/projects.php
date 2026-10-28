@@ -54,6 +54,16 @@ function jerry_register_project_fields() {
         }
     ));
 
+    register_post_meta('project', 'project_featured', array(
+        'type'          => 'boolean',
+        'single'        => true,
+        'show_in_rest'  => true,
+        'default'       => false,
+        'auth_callback' => function() {
+            return current_user_can('edit_posts');
+        }
+    ));
+
 }
 
 add_action('init', 'jerry_register_project_fields');
@@ -80,6 +90,8 @@ add_action('add_meta_boxes', 'jerry_add_project_meta_box');
 
 function jerry_display_project_status($post) {
 
+
+    // display project current status - inprogress or completed
     $status = get_post_meta($post->ID, 'project_status', true);
 
     if (empty($status)) {
@@ -100,6 +112,8 @@ function jerry_display_project_status($post) {
     </select>
 
     
+
+    <!-- display project technologies -->
     <?php
     $technologies = get_post_meta($post->ID, 'project_technologies', true);
     ?>
@@ -119,7 +133,7 @@ function jerry_display_project_status($post) {
         style="width: 100%;"
     >
 
-    
+    <!-- display project github link -->
     <?php
     $github = get_post_meta($post->ID, 'project_github', true);
     ?>
@@ -138,6 +152,24 @@ function jerry_display_project_status($post) {
         placeholder="https://github.com/username/project"
         style="width: 100%;"
     >
+
+    <!-- creating a way to see featured projects first -->
+     <?php
+     $featured = get_post_meta($post->ID, 'project_featured', true);
+     ?>
+
+    <p>
+        <label for="project_featured">
+            <input
+                type="checkbox"
+                name="project_featured"
+                id="project_featured"
+                value="1"
+                <?php checked($featured, true); ?> 
+            >
+            <strong>Featured Project</strong>
+        </label>    
+    </p>
 
 
     <?php
@@ -216,6 +248,15 @@ function jerry_save_project_status($post_id) {
             delete_post_meta($post_id, 'project_github');
         }
     }
+
+    // Save featured project checkbox data
+    $featured = isset($_POST['project_featured']);
+
+    update_post_meta(
+        $post_id,
+        'project_featured',
+        $featured
+    );
 
 
 }
