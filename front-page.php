@@ -9,17 +9,28 @@ get_header();
 
 <main>
     <section class="hero">
-        <h2>Welcome to My Website</h2>
-        <p>
-            A place where I share my work in technology,
-            media production, and disc golf.
+        
+        <p class="hero-label">TECHNOLOGY • CREATIVITY • DISC GOLF</p>
+
+        <h1>Building, Creating, and Improving.</h1>
+
+        <p class="hero-description">
+            Exploring cybersecurity, developing software,
+            producing media, and sharing my journey in disc golf.
         </p>
+
     </section>
 
     <section class="interests">
         <h2>Explore My Interests</h2>
         <?php if ($technology) : ?>
             <a class="interest-card" href="<?php echo esc_url(get_permalink($technology->ID)); ?>">
+                <!-- thumbnail -->
+                <?php if (has_post_thumbnail($technology->ID)) : ?>
+                    <div class="interest-image">
+                        <?php echo get_the_post_thumbnail($technology->ID, 'medium_large'); ?>
+                    </div>
+                <?php endif; ?>
                 <h3>Technology & Cybersecurity</h3>
                 <p>Projects, programming, and cybersecurity.</p>
             </a>
@@ -27,6 +38,12 @@ get_header();
 
         <?php if ($media) : ?>
             <a class="interest-card" href="<?php echo esc_url(get_permalink($media->ID)); ?>">
+                <!-- thumbnail -->
+                <?php if (has_post_thumbnail($media->ID)) : ?>
+                    <div class="interest-image">
+                        <?php echo get_the_post_thumbnail($media->ID, 'medium_large'); ?>
+                    </div>
+                <?php endif; ?>
                 <h3>Media Production</h3>
                 <p>Photography, video production, and creative projects.</p>
             </a>
@@ -34,6 +51,12 @@ get_header();
 
         <?php if ($disc_golf) : ?>
             <a class="interest-card" href="<?php echo esc_url(get_permalink($disc_golf->ID)); ?>">
+                <!-- thumbnail -->                
+                <?php if (has_post_thumbnail($disc_golf->ID)) : ?>
+                    <div class="interest-image">
+                        <?php echo get_the_post_thumbnail($disc_golf->ID, 'medium_large'); ?>
+                    </div>
+                <?php endif; ?>
                 <h3>Disc Bandit</h3>
                 <p>Disc golf, training, tournaments, and content.</p>
             </a>
