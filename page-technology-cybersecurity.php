@@ -97,9 +97,18 @@
                             <strong>Categories:</strong>
 
                             <?php
-                            $category_names = wp_list_pluck($categories, 'name');
-                            echo esc_html(implode(', ', $category_names));
+                            foreach ($categories as $category) {
+
+                                $category_url = get_term_link($category);
+
+                                if (!is_wp_error($category_url)) {
+                                    echo '<a href="' . esc_url($category_url) . '">'
+                                        . esc_html($category->name)
+                                        . '</a> ';
+                                }
+                            }
                             ?>
+
                         </p>
                         <?php endif; ?>
 
