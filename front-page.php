@@ -8,18 +8,39 @@ get_header();
 ?>
 
 <main>
+    
     <section class="hero">
-        
-        <p class="hero-label">TECHNOLOGY • CREATIVITY • DISC GOLF</p>
 
-        <h1>Building, Creating, and Improving.</h1>
-
-        <p class="hero-description">
-            Exploring cybersecurity, developing software,
-            producing media, and sharing my journey in disc golf.
+        <p class="hero-label">
+            CYBERSECURITY • SOFTWARE DEVELOPMENT • CREATIVE MEDIA
         </p>
 
+        <h1>Hi, I'm Jerry.</h1>
+
+        <h2>Building, Creating, and Improving.</h2>
+
+        <p class="hero-description">
+            I'm a cybersecurity student and developer who enjoys
+            building software, exploring technology, producing media,
+            and documenting my journey in disc golf.
+        </p>
+
+        <div class="hero-actions">
+            <a class="hero-button"
+            href="<?php echo esc_url(home_url('/technology-cybersecurity/')); ?>">
+                Explore My Projects
+            </a>
+
+            <a class="hero-github"
+            href="https://github.com/jsterling23"
+            target="_blank"
+            rel="noopener noreferrer">
+                View My GitHub
+            </a>
+        </div>
+
     </section>
+
 
     <section class="interests">
         <h2>Explore My Interests</h2>
@@ -61,6 +82,93 @@ get_header();
                 <p>Disc golf, training, tournaments, and content.</p>
             </a>
         <?php endif; ?>
+    </section>
+    
+    
+    <section class="home-featured">
+        <h2>Featured Projects</h2>
+
+        <?php
+        $featured_projects = new WP_Query(array(
+            'post_type'      => 'project',
+            'posts_per_page' => 2,
+            'meta_query'     => array(
+                array(
+                    'key'     => 'project_featured',
+                    'value'   => '1',
+                    'compare' => '='
+                )
+            )
+        ));
+        ?>
+
+        
+        <?php if ($featured_projects->have_posts()) : ?>
+
+            <div class="home-featured-grid">
+
+                <?php while ($featured_projects->have_posts()) : $featured_projects->the_post(); ?>
+
+                    
+                <article class="home-project-card home-project-spotlight">
+
+                    <div class="home-project-image">
+                        <a href="<?php echo esc_url(get_permalink()); ?>">
+
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail('large'); ?>
+                            <?php endif; ?>
+
+                        </a>
+                    </div>
+
+                    <div class="home-project-details">
+
+                        <p class="featured-label">FEATURED WORK</p>
+
+                        <h3>
+                            <a href="<?php echo esc_url(get_permalink()); ?>">
+                                <?php the_title(); ?>
+                            </a>
+                        </h3>
+
+                        <?php the_excerpt(); ?>
+
+                        <?php
+                        $technologies = get_post_meta(
+                            get_the_ID(),
+                            'project_technologies',
+                            true
+                        );
+                        ?>
+
+                        <?php if (!empty($technologies)) : ?>
+                            <p class="home-project-tech">
+                                <strong>Technologies:</strong>
+                                <?php echo esc_html($technologies); ?>
+                            </p>
+                        <?php endif; ?>
+
+                        <a class="home-project-button"
+                        href="<?php echo esc_url(get_permalink()); ?>">
+                            View Project
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <?php endwhile; ?>
+
+            </div>
+
+            <?php wp_reset_postdata(); ?>
+
+        <?php else : ?>
+            <p>No featured projects yet.</p>
+        <?php endif; ?>
+
     </section>
 
     
