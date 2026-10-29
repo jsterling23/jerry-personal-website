@@ -42,16 +42,23 @@
                     <div class="project-categories">
                         <strong>Categories:</strong>
 
-                        <?php foreach ($categories as $category) : ?>
-                            <?php $category_url = get_term_link($category); ?>
+                                        
+                        <?php
+                        $category_links = array();
 
-                            <?php if (!is_wp_error($category_url)) : ?>
-                                <a href="<?php echo esc_url($category_url); ?>">
-                                    <?php echo esc_html($category->name); ?>
-                                | </a>
-                            <?php endif; ?>
+                        foreach ($categories as $category) {
+                            $category_url = get_term_link($category);
 
-                        <?php endforeach; ?>
+                            if (!is_wp_error($category_url)) {
+                                $category_links[] = '<a href="' . esc_url($category_url) . '">'
+                                    . esc_html($category->name)
+                                    . '</a>';
+                            }
+                        }
+
+                        echo implode(' | ', $category_links);
+                        ?>
+
                     </div>
                 <?php endif; ?>
 

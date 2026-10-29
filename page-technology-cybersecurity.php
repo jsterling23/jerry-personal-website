@@ -49,9 +49,18 @@
                 $projects->the_post();
         ?>
 
-            
+            <!-- project card start -->
             <article class="project-card">
                 <a href="<?php echo esc_url(get_permalink()); ?>">
+
+                    
+                    <?php if (has_post_thumbnail()) : ?>
+                        <div class="project-thumbnail">
+                            <?php the_post_thumbnail('medium_large'); ?>
+                        </div>
+                    <?php endif; ?>
+
+
                     <h3><?php the_title(); ?></h3>
                     <p><?php the_excerpt(); ?></p>
                 </a>    
@@ -96,18 +105,23 @@
                         <p class="card-categories">
                             <strong>Categories:</strong>
 
+                            
                             <?php
-                            foreach ($categories as $category) {
+                            $category_links = array();
 
+                            foreach ($categories as $category) {
                                 $category_url = get_term_link($category);
 
                                 if (!is_wp_error($category_url)) {
-                                    echo '<a href="' . esc_url($category_url) . '">'
+                                    $category_links[] = '<a href="' . esc_url($category_url) . '">'
                                         . esc_html($category->name)
-                                        . ' |</a> ';
+                                        . '</a>';
                                 }
                             }
+
+                            echo implode(' | ', $category_links);
                             ?>
+
 
                         </p>
                         <?php endif; ?>
