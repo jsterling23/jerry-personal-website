@@ -104,7 +104,7 @@
                                 if (!is_wp_error($category_url)) {
                                     echo '<a href="' . esc_url($category_url) . '">'
                                         . esc_html($category->name)
-                                        . '</a> ';
+                                        . ' |</a> ';
                                 }
                             }
                             ?>

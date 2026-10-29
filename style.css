@@ -351,3 +351,24 @@ footer {
     color: #555;
     margin-top: 10px;
 }
+
+
+.card-categories a {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+}
+.card-categories a:hover {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.project-categories a {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+}
+.project-categories a:hover {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}

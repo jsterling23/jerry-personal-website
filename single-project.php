@@ -16,6 +16,7 @@
                     <?php echo esc_html($status); ?>
                 </p>
 
+                <!-- display technologies  -->
                 <?php
                     $technologies = get_post_meta(
                         get_the_ID(),
@@ -31,7 +32,31 @@
                     </p>
                 <?php endif; ?>
 
-                
+
+                <!-- display categories -->
+                <?php
+                $categories = get_the_terms(get_the_ID(), 'project_category');
+
+                if ($categories && !is_wp_error($categories)) :
+                ?>
+                    <div class="project-categories">
+                        <strong>Categories:</strong>
+
+                        <?php foreach ($categories as $category) : ?>
+                            <?php $category_url = get_term_link($category); ?>
+
+                            <?php if (!is_wp_error($category_url)) : ?>
+                                <a href="<?php echo esc_url($category_url); ?>">
+                                    <?php echo esc_html($category->name); ?>
+                                | </a>
+                            <?php endif; ?>
+
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+
+                <!-- display github link -->
                 <?php
                     $github = get_post_meta(
                         get_the_ID(),
