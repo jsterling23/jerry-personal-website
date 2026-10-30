@@ -755,3 +755,76 @@ body.home .hero-github:hover {
 
 }
 
+
+
+/* Media Production Page */
+
+body:has(.media-page) {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+/* Header and Footer */
+
+body:has(.media-page) > header {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-color);
+}
+
+body:has(.media-page) > header h1 {
+    color: var(--text-main);
+}
+
+body:has(.media-page) > header nav a {
+    color: var(--text-muted);
+}
+
+body:has(.media-page) > header nav a:hover,
+body:has(.media-page) > header nav a.active {
+    color: var(--accent);
+}
+
+body:has(.media-page) footer {
+    color: var(--text-muted);
+}
+
+/* Page media Layout */
+
+.media-page {
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto 60px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.media-intro {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 50px 35px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.media-label {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.media-intro h1 {
+    color: var(--text-main);
+    font-size: 32px;
+    margin: 15px 0;
+}
+
+.media-intro p {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.media-content {
+    margin-top: 35px;
+}
