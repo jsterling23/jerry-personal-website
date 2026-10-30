@@ -643,6 +643,162 @@ body:has(.media-page) footer {
     margin-top: 35px;
 }
 
+
+/* Media Production Featured Image */
+
+.media-featured-image {
+    margin-top: 25px;
+}
+
+.media-featured-image img {
+    display: block;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+
+/* Media Production Video Showcase */
+
+.media-content {
+    max-width: 1000px;
+    margin: 35px auto 0;
+}
+
+.media-content h2 {
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.media-content .wp-block-embed {
+    width: 100%;
+    margin: 0 0 30px;
+}
+
+.media-content .wp-block-embed__wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+.media-content .wp-block-embed__wrapper::before {
+    display: none;
+}
+
+.media-content .wp-block-embed__wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+
+
+/* Media Project Cards */
+
+.media-projects {
+    margin-top: 40px;
+}
+
+.media-projects h2 {
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.media-project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.media-project-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 25px;
+    transition: transform 0.2s ease;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    align-items: center;
+    gap: 24px;
+}
+
+.media-project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.media-project-card h3 {
+    margin-top: 0;
+}
+
+.media-project-card a,
+.media-project-card a:visited {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.media-project-card a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+.media-project-card p {
+    color: var(--text-muted);
+}
+
+
+.media-project-image {
+    margin-bottom: 0;
+}
+
+.media-project-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+.media-project-info h3 {
+    margin: 0 0 12px;
+}
+
+@media (max-width: 700px) {
+    .media-project-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Media Project Thumbnails */
+
+.media-project-image {
+    margin-bottom: 15px;
+}
+
+.media-project-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+.media-project-categories {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
 /* =========================================================
    10. Responsive layouts
    ========================================================= */

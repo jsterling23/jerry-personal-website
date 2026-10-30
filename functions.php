@@ -19,3 +19,4 @@ add_action('after_setup_theme','jerry_theme_setup');
 
 
 require_once get_template_directory() . '/inc/projects.php';
+require_once get_template_directory() . '/inc/media-projects.php';
