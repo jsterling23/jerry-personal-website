@@ -35,6 +35,13 @@ body {
     flex-direction: column;
     box-sizing: border-box;
 }
+body > header {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
 
 h1 {
     color: #f4f4f4;
@@ -184,6 +191,19 @@ header nav a.active {
     height: 180px;
     object-fit: contain;
 }
+
+
+/* Homepage Container Widths */
+
+body.home > header,
+body.home .hero {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
 
 /* =========================================================
    5. Homepage — featured projects
