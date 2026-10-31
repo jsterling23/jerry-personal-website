@@ -887,3 +887,151 @@ body:has(.media-page) footer {
         padding: 6px 0;
     }
 }
+
+
+
+/* Technology & Cybersecurity Dark Theme */
+
+body:has(.technology-page) {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+}
+
+/* Navigation Header */
+
+body:has(.technology-page) > header {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-color);
+}
+
+/* Introduction */
+
+.technology-page .tech-intro {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.technology-page .tech-intro h1 {
+    color: var(--text-main);
+}
+
+/* Project Cards */
+
+.technology-page .project-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.technology-page .project-card h3 {
+    color: var(--accent);
+}
+
+.technology-page .project-card p {
+    color: var(--text-muted);
+}
+
+/* Project Metadata */
+
+.technology-page .card-status,
+.technology-page .card-technologies,
+.technology-page .card-categories {
+    color: var(--text-muted);
+}
+
+/* Category Links */
+
+.technology-page .card-categories a {
+    color: var(--accent);
+}
+
+.technology-page .card-categories a:hover {
+    color: var(--accent-hover);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* Card Hover */
+
+.technology-page .project-card:hover {
+    border-color: var(--accent);
+}
+
+/* Footer */
+
+body:has(.technology-page) footer {
+    color: var(--text-muted);
+}
+
+
+
+/* Media Production Section Panels */
+
+.media-content .media-showcase-section {
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 30px;
+}
+
+/* Section Headings */
+
+.media-content .media-showcase-section h2 {
+    color: var(--text-main);
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+/* Section Descriptions */
+
+.media-content .media-showcase-section p {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* Photography Gallery Spacing */
+
+.media-content .media-showcase-section .wp-block-gallery {
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* Smaller Screens */
+
+@media (max-width: 600px) {
+    .media-content .media-showcase-section {
+        padding: 18px;
+    }
+}
+
+
+
+/* Photography Gallery Layout */
+
+.media-content .media-showcase-section .wp-block-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.media-content .media-showcase-section .wp-block-gallery figure {
+    width: 100% !important;
+    min-width: 0;
+    margin: 0;
+}
+
+.media-content .media-showcase-section .wp-block-gallery img {
+    width: 100%;
+    height: auto;
+}
+
+/* Mobile Gallery */
+
+@media (max-width: 600px) {
+    .media-content .media-showcase-section .wp-block-gallery {
+        grid-template-columns: 1fr;
+    }
+}

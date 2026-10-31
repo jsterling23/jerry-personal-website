@@ -29,6 +29,7 @@
                 <?php the_content(); ?>
             </section>
 
+            <?php /*
             <section class="media-projects">
                 <h2>Media Projects</h2>
                 <?php
@@ -90,7 +91,7 @@
 
 
             </section>
-
+            */ ?>
 
         <?php endwhile; ?>
     <?php endif; ?>
